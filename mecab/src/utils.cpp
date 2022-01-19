@@ -21,7 +21,7 @@
 
 #ifdef HAVE_WINDOWS_H
 #define NOMINMAX
-#include <windows.h>
+#include <Windows.h>
 #include <stdlib.h>
 #endif
 
@@ -35,6 +35,8 @@ extern HINSTANCE DllInstance;
 #include "mecab.h"
 #include "param.h"
 #include "utils.h"
+
+#define MECAB_DEFAULT_RC "mecabrc"
 
 namespace MeCab {
 
@@ -325,7 +327,7 @@ bool load_dictionary_resource(Param *param) {
   }
 #endif
 
-#if defined(_WIN32) && !defined(__CYGWIN__)
+#if defined(_WIN32) && !defined(__CYGWIN__) && 0
   HKEY hKey;
   scoped_fixed_array<wchar_t, BUF_SIZE> v;
   DWORD vt;

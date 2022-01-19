@@ -23,6 +23,9 @@
 #include "config.h"
 #endif
 
+#define PACKAGE "mecab"
+#define VERSION "0.996"
+
 const char *getGlobalError();
 void setGlobalError(const char *str);
 

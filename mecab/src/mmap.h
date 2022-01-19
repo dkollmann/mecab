@@ -33,7 +33,8 @@ extern "C" {
 
 #if defined(_WIN32) && !defined(__CYGWIN__)
 #ifdef HAVE_WINDOWS_H
-#include <windows.h>
+#define NOMINMAX
+#include <Windows.h>
 #endif
 #else
 

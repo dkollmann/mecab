@@ -20,6 +20,8 @@ namespace zlib {
 #define LG(p)((unsigned long)(SH(p)) |((unsigned long)(SH((p)+2)) << 16))
 #endif
 
+#define register 
+
 namespace MeCab {
 
 namespace Darts {
@@ -177,7 +179,7 @@ class DoubleArrayImpl {
                  static_cast<size_t>(siblings[siblings.size() - 1].code + 1));
 
     for (size_t i = 0; i < siblings.size(); ++i)
-      array_[begin + siblings[i].code].check = begin;
+      array_[begin + siblings[i].code].check = (array_u_type_) begin;
 
     for (size_t i = 0; i < siblings.size(); ++i) {
       std::vector <node_t> new_siblings;
@@ -186,7 +188,7 @@ class DoubleArrayImpl {
         array_[begin + siblings[i].code].base =
             value_ ?
             static_cast<array_type_>(-value_[siblings[i].left]-1) :
-            static_cast<array_type_>(-siblings[i].left-1);
+            static_cast<array_type_>(-(int64_t)siblings[i].left-1);
 
         if (value_ && (array_type_)(-value_[siblings[i].left]-1) >= 0) {
           error_ = -2;
@@ -198,7 +200,7 @@ class DoubleArrayImpl {
 
       } else {
         size_t h = insert(new_siblings);
-        array_[begin + siblings[i].code].base = h;
+        array_[begin + siblings[i].code].base = (array_type_) h;
       }
     }
 

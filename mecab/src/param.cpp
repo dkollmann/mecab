@@ -10,6 +10,9 @@
 #include "string_buffer.h"
 #include "utils.h"
 
+#define PACKAGE "mecab"
+#define VERSION "0.996"
+
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -23,7 +26,7 @@ void init_param(std::string *help,
   *help = std::string(COPYRIGHT) + "\nUsage: " +
       system_name + " [options] files\n";
 
-  *version = std::string(PACKAGE) + " of " + VERSION + '\n';
+  *version = PACKAGE " of " VERSION "\n";
 
   size_t max = 0;
   for (size_t i = 0; opts[i].name; ++i) {

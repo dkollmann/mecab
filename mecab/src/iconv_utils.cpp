@@ -19,7 +19,8 @@
 #include "iconv_utils.h"
 
 #if defined(_WIN32) && !defined(__CYGWIN__)
-#include "windows.h"
+#define NOMINMAX
+#include <Windows.h>
 #endif
 
 namespace {
