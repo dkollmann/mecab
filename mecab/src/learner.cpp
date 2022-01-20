@@ -165,9 +165,9 @@ class CRFLearner {
     if (thread_num > 1) {
       thread.resize(thread_num);
       for (size_t i = 0; i < thread_num; ++i) {
-        thread[i].start_i = i;
+        thread[i].start_i = (unsigned short) i;
         thread[i].size = x.size();
-        thread[i].thread_num = thread_num;
+        thread[i].thread_num = (unsigned short) thread_num;
         thread[i].x = &x[0];
         thread[i].expected.resize(expected.size());
       }
@@ -279,14 +279,14 @@ class CRFLearner {
 
 class Learner {
  public:
-  static bool run(int argc, char **argv) {
+  static int run(int argc, char **argv) {
     static const MeCab::Option long_options[] = {
       { "dicdir",   'd',  ".",     "DIR",
         "set DIR as dicdir(default \".\" )" },
       { "old-model",   'M',  0,     "FILE",
         "set FILE as old CRF model file" },
       { "cost",     'c',  "1.0",   "FLOAT",
-        "set FLOAT for cost C for constraints violatoin" },
+        "set FLOAT for cost C for constraints violation" },
       { "freq",     'f',  "1",     "INT",
         "set the frequency cut-off (default 1)" },
       { "eta",      'e',  "0.00005", "DIR",
